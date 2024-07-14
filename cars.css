@@ -1,0 +1,241 @@
+#cars {
+    position: relative;
+}
+
+.nav {
+    background-color: #a71111;
+    padding: auto;
+}
+
+.background-photo {
+    position: relative;
+}
+
+.navbar-brand img {
+    height:40px;
+}
+ 
+.logo img {
+    height: 100px;
+}
+ 
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+}
+ 
+nav ul li a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+.navbar {
+    border-image-source: url(mainB.png);
+    border-image-slice: 30; 
+    border-image-width: 0 0 2px 0; 
+    border-image-outset: 0;
+    border-image-repeat: round
+    
+}
+.bg-pic {
+    position: relative;
+    margin-top: 80px;
+}
+
+.overlay {
+    position: absolute;
+    top: 10%;
+    left: 0;
+    width: 100%;
+    height: 15%;
+    background-color: rgb(255, 255, 255);
+}
+
+.bg-pic img {
+    width: 100%;
+    display: block;
+    height: 100px;
+    top: -10%;
+}
+
+.centered-content {
+    text-align: center;
+    margin: 0 auto;
+    max-width: 600px;
+    position: relative;
+    z-index: 1;
+}
+
+.centered-content h2 {
+    margin-bottom: 20px;
+    top: -90%;
+    position: relative;
+    color: aliceblue;
+}
+
+.cars-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    overflow: hidden;
+}
+
+.view-all-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.view-all-button:hover {
+    background-color: rgb(194, 10, 10);
+    color: white;
+}
+
+
+.car-list {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.col {
+    width: calc(25% - 20px);
+    margin-bottom: 20px;
+}
+
+.car-item {
+    text-align: center;
+}
+
+.car-item img {
+    max-width: 100%;
+}
+
+#container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 300px;
+    background-color: #a71111;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+#container div {
+    height: 200px;
+    width: 100%;
+    font-style: italic;
+    max-width: 300px;
+    background-color: #ffffff;
+    margin: 20px;
+    text-align: center;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+    box-sizing: border-box;
+}
+
+.fa-laptop, .fa-lock, .fa-car {
+    color: #b00000; 
+    margin: 10px;
+    font-size: 40px;
+}
+
+.fa-lock, .fa-car {
+    transition: transform 0.3s ease, color 0.3s ease; 
+}
+
+
+
+@media (max-width: 992px) {
+
+    .body{
+        color: #000;
+        }
+
+    .bg-pic {
+        position: relative;
+        margin-top: 80px;
+    }
+
+    .centered-content h2 {
+        margin-bottom: 20px;
+        bottom: 55px;
+        position: relative;
+
+    }
+
+    .row {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .col {
+        width: 45%;
+        margin: 10px;
+    }
+
+    #container {
+        flex-direction: column;
+    }
+
+    #container div {
+        width: 80%;
+        margin: 20px 0;
+    }
+
+
+    
+}
+
+
+
+@media (max-width: 600px) {
+    .body{
+    color: #000;
+    }
+
+    .bg-pic {
+        position: relative;
+        margin-top: 80px;
+    }
+
+    .centered-content h2 {
+        margin-bottom: 20px;
+        bottom: 55px;
+        position: relative;
+       
+    }
+
+    .row {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .col {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    #container {
+        flex-direction: column;
+    }
+
+    #container div {
+        width: 90%;
+        margin: 10px 0;
+    }
+
+
+}

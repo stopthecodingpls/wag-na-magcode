@@ -1,0 +1,124 @@
+
+body, h1, p, ul, li, form, label, input, button, table, th, td {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+header {
+    background-image:url(mainB1.png);
+    color: #e7e7e7;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    overflow: auto;
+    text-overflow: ellipsis;
+}
+
+header .logo {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+header nav ul li {
+    display: inline;
+}
+
+header nav ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+header button.sign-up {
+    background-color: #ffc800;
+    color: #ef0000;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+header button.sign-up:hover {
+    background-color: #e13906;
+}
+
+main {
+    background: #fff;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+main h1 {
+    margin-bottom: 20px;
+    font-size: 2em;
+}
+
+main p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table th, table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+table th {
+    background-color: #f2f2f2;
+}
+
+table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+table tr:hover {
+    background-color: #f1f1f1;
+}
+
+button.edit, button.delete {
+    background-color: #ffc400;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 0.9em;
+}
+
+button.delete {
+    background-color: #dc3545;
+}
+
+button.edit:hover {
+    background-color: #b30000;
+}
+
+button.delete:hover {
+    background-color: #c82333;
+}

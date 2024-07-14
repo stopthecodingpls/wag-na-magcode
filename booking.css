@@ -1,0 +1,291 @@
+body {
+    border: 100px #00dd60;
+    width: 100vw;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20;
+    background-color: #f5f5f5;
+    overflow: auto;
+  }
+ 
+ 
+ header {
+    min-height: 600px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white(201, 0, 0);
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  
+ }
+ 
+ 
+ .navbar-brand img {
+    height: 40px;
+ }
+ 
+ 
+ .logo img {
+    height: 100px;
+ }
+ 
+ 
+ nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+ }
+ 
+ 
+ nav ul li a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+ }
+ 
+ 
+ .sign-up {
+    background-color: #ffcc00;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+ }
+ 
+ 
+ .search-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd;
+    overflow: auto;
+ }
+ 
+ 
+ .search-section::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 0;
+    right: 0;
+    height: auto;
+    border-image: url(mainB.png) 30 stretch;
+    border-width: 60px;
+    border-style: solid;
+    border-color: transparent;
+ }
+ 
+ 
+ .search-field {
+    flex: 1;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+   
+ }
+ 
+ 
+ .edit-btn {
+    margin-left: 10px;
+    padding: 8px 20px;
+    background-color: #ffeb3b;
+    border: none;
+    width: auto;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+ 
+ 
+  
+    &:hover {
+        background-color: #ffd54f;
+    }
+ }
+ 
+ 
+ .card-container {
+    display: grid;
+    flex-direction: column;
+    align-items: center;
+   
+ }
+ 
+ 
+ .card {
+    display: flex;
+    justify-content: space-between;
+    background-color: #f9f9f9;
+    max-width: 100rem;
+    border: 5px solid transparent;
+    border-radius: 15px;
+    padding: 0px 20px;
+    width: min(90%, 10000px);
+    margin: 15px;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    flex-wrap: wrap;
+    overflow: hidden;
+    margin-inline: auto;
+   
+ 
+ 
+   
+ }
+ 
+ 
+ 
+ 
+ .car-details {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    flex-wrap: wrap;
+    padding: 20px;
+ 
+ 
+ }
+ 
+ 
+ .car-image img {
+    width: 300px;
+    padding: 5px 10px;
+    margin-right: 20px;
+    flex-shrink:initial;
+ }
+ 
+ 
+ .car-info {
+    padding-top: 10px;
+    font-family: Arial, sans-serif;
+ }
+ 
+ 
+ .car-info h2 {
+    margin: 0;
+    font-weight: bold;
+    font-size: 30px;
+    color: #333;
+ }
+ 
+ 
+ .car-info .subheading {
+    color: #d32f2f;
+    font-weight: bolder;
+    font-size: 14px;
+ }
+ 
+ 
+ .car-info .features {
+    display: flex;
+    margin-top: 10px;
+ }
+ 
+ 
+ .car-info .features div {
+    margin-right: 5px;
+    padding: 5px 10px;
+    background-color: #fff;
+    border-radius: 5px;
+    border: 1px solid #e0e0e0;
+    font-size: 14px;
+ }
+ 
+ 
+ .reservation-fee {
+    margin-top: 10px;
+    font-style: italic;
+    padding: 5px 10px;
+    font-size: 0.9rem;
+    color: #37e749;
+    background-color: #fff;
+    border-radius: 5px;
+    border: 1px solid #e0e0e0;
+ }
+ 
+ 
+ .price-section {
+    text-align: right;
+    margin-left: 20px;
+ }
+ 
+ 
+ .price-section .price {
+    font-size: 24px;
+    font-weight: bolder;
+    color: #dd0000;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+    overflow: auto;
+ }
+ 
+ 
+ .price-section .select-button {
+    display: inline-block;
+    margin-top: 0px;
+    padding: max(3vh, 1rem) 1.5rem;
+    background-color: #ffeb3b;
+    color: #d32f2f;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    overflow: auto;
+ 
+ 
+    &:hover {
+        background-color: #ffd54f;
+ }
+ 
+ 
+ }
+ img {
+    max-width: auto;
+    height: auto;
+ }
+ 
+ 
+ @media (max-width: 768px) {
+ 
+ 
+    .search-section {
+        flex-direction: column;
+        align-items: center;
+    }
+ 
+ 
+    .search-field {
+        width: 100%;
+        margin-right: 0;
+    }
+    .car-details{
+        width: 100%;
+        margin-right: 0;
+    }
+ 
+ 
+   
+ }
+ 
+ 
+ @media (max-width: 576px) {
+    .navbar-expand-lg .navbar-nav .nav-item {
+        margin-bottom: 10px;
+    }
+ }
+ 
