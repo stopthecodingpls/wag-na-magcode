@@ -1,0 +1,186 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.background-photo {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.background-photo img {
+    width: 100%;
+    height: 70px;
+    display: block;
+}
+
+.header {
+    position: relative;
+}
+
+.header-overlay {
+    background: rgba(255, 255, 255, 0.5);
+    padding: 20px;
+    margin-top: -7%;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.step-buttons {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.step-button {
+    background-color: #fff;
+    border: 2px solid #ddd;
+    color: #333;
+    padding: 15px 30px;
+    margin: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s, transform 0.3s;
+}
+
+.step-button:hover {
+    background-color: #910404;
+    color: #f0f0f0;
+}
+
+.rectangle1, .rectangle2, .box1, .box2 {
+    width: 60%;
+    margin: 10px auto;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.box1, .box2 {
+    margin-top: 0;
+}
+
+.smallphoto {
+    width: 200px;
+    height: auto;
+}
+
+.red-line {
+    height: 2px;
+    background-color: red;
+    margin: 10px 0;
+}
+
+.box-content, .box-content2, .box-content3 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px solid #9c1616;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.rectanglee {
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: left;
+}
+
+.rec-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.rec-content p {
+    color: #333333;
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.rec-content button.payment {
+    background-color: #9c1616;
+    border: none;
+    color: white;
+    width: 30%;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.rec-content button.payment:hover {
+    background-color: rgb(255, 12, 12);
+}
+
+.bold {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .step-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    .step-button {
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .rectangle1, .rectangle2, .box1, .box2 {
+        width: 90%;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+}
+
+@media (min-width: 769px) {
+    .container {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .step-buttons {
+        width: 100%;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    .rectangle1, .box1 {
+        order: 1;
+        width: calc(50% - 20px);
+    }
+
+    .rectangle2, .box2 {
+        order: 2;
+        width: calc(50% - 20px);
+}
+}

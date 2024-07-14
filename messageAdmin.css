@@ -1,0 +1,145 @@
+
+body, h1, p, ul, li, form, label, input, button, textarea {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-overflow: ellipsis;
+}
+
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+
+header {
+    background-image: url(mainB.png);
+    color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    overflow: auto;
+}
+
+header .logo {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+header nav ul li {
+    display: inline;
+}
+
+header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+header button.sign-up {
+    background-color: #ffae00;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+header button.sign-up:hover {
+    background-color: #b30000;
+}
+
+main {
+    background: #fff;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-overflow: ellipsis;
+}
+
+main h1 {
+    margin-bottom: 20px;
+    font-size: 2em;
+}
+
+.message-container {
+    display: grid;
+    gap: 20px;
+}
+
+.message {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.message-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.message-sender {
+    font-weight: bold;
+}
+
+.message-date {
+    font-size: 0.9em;
+    color: #666;
+}
+
+.message-content {
+    margin-bottom: 10px;
+}
+
+.reply-form {
+    margin-top: 10px;
+}
+
+.reply-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: vertical;
+}
+
+.reply-form button {
+    background-color: #ffc400;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+.reply-form button:hover {
+    background-color: #b30000;
+}
+
+@media (max-width: 768px) {
+    .message-container {
+        grid-template-columns: 1fr; 
+    }
+
+    .reply-form textarea {
+        width: calc(100% - 20px); 
+    }
+}

@@ -1,0 +1,368 @@
+#service {
+    padding-top: 50px;
+    position: relative;
+    overflow: hidden;
+}
+
+.header {
+    position: relative;
+    background: url('mainB.png') no-repeat center center;
+    background-size: cover;
+    color: rgb(255, 255, 255);
+    padding: 100px 20px;
+    text-align: center;
+    height: 100vh;
+    overflow: auto;
+    white-space: normal;
+}
+
+.header h1 {
+    font-size: 3rem;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+    color: black;
+    position: absolute;
+    top: 10%;
+    font-family: 'Times New Roman', Times, serif;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.navbar-brand img {
+    height:40px;
+}
+ 
+.logo img {
+    height: 100px;
+}
+ 
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+}
+ 
+nav ul li a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+.navbar {
+    border-image-source: url(mainB.png);
+    border-image-slice: 30; 
+    border-image-width: 0 0 2px 0; 
+    border-image-outset: 0;
+    border-image-repeat: round
+    
+}
+
+.bg-photo {
+    position: relative;
+    overflow: hidden;
+    top: -5px;
+    height: 550px;
+}
+ 
+.header-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+ 
+.white-bg {
+    font-size: 3rem;
+    background-color: rgb(255, 255, 255); 
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    color: black;
+    position: absolute;
+    top: 1.8%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.rent-info {
+    text-align: right;
+    color: #fff;
+}
+
+.rent-photo img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: -5px;
+    margin-left: -800px;
+    position: absolute;
+    top: 1.5%;
+    left: 50%;
+}
+
+.rent-details {
+    margin-top: 20px;
+}
+
+.rent-details h2 {
+    position: absolute;
+    margin-bottom: -5px;
+    margin-left: 100px;
+    margin: auto;
+    width: 100%;
+    color: #fff;
+    top: 30%;
+    left: -10%;
+}
+
+.rent-details p {
+    position: absolute;
+    margin-bottom: -5px;
+    margin-left: 100px;
+    font-weight: bolder;
+    font-style: oblique;
+    margin: auto;
+    width: 100%;
+    color: #fff;
+    top: 43%;
+    left: -9%;
+}
+
+.rent-details a {
+    color: #ffffff;
+    margin-top: 180px;
+
+}
+
+.main-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.main-photo {
+    text-align: right;
+    margin-right: -100px;
+    position: absolute;
+    right: 10%;
+    height: auto;
+    margin-top: 160px;
+}
+
+.main-photo img {
+    max-width: 100%;
+}
+
+.main-details {
+    flex: 1;
+    text-align: left;
+    padding-left: 20px;
+    margin-top: 80px ;
+}
+
+.rent-button {
+    margin-top: 20%;
+    text-align: left;
+    position: relative;
+    left: 90%;
+}
+
+.rent-button a {
+    color: #ffffff;
+}
+
+.main-button {
+    margin-top: 190px;
+    position: relative;
+    right: 85.5%;
+    
+}
+
+.main-button a {
+    color: #000;
+    text-decoration: none;
+    padding: 10px 20px;
+    border: 1px solid #000;
+    background-color: transparent;
+    border-radius: 4px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.main-button a:hover {
+    background-color: #000;
+    color: #fff;
+}
+
+.main-details p {
+    margin-left: -15%;
+    margin-top: -5%;
+    font-size: large;
+    font-style: italic;
+    font-weight: bolder;
+}
+
+.main-button {
+    position: relative;
+    left: -97%;
+    margin-top: 10%;
+    padding-top: 5%;
+}
+
+@media (max-width: 1200px) {
+    body {
+        color: rgb(0, 0, 0);
+    }
+    .rent-photo img {
+        max-width: 60%;
+        height: auto;
+        display: block;
+        margin-top: 40px;
+        margin-left: -56%;
+
+    }
+
+    .rent-details h2, .rent-details p {
+        left: -2%;
+        margin-left: 0;
+    }
+
+    .rent-button {
+        left: 90%;
+        padding-top: 5%;
+    }
+
+    .main-photo img {
+        max-width: 70%;
+        height: auto;
+        display: block;
+        margin-left: 30%;
+    }
+    .main-photo {
+        margin-right: 0;
+        right: 0;
+    }
+
+    .main-details p {
+        margin-left: -10%;
+        margin-top: -5%;
+    }
+
+    .main-button {
+        position: relative;
+        left: -55%;
+        margin-top: 10%;
+        padding-top: 5%;
+    }
+}
+
+@media (max-width: 992px) {
+   
+    .rent-photo img {
+        max-width: 70%;
+        height: auto;
+        display: block;
+        margin-top: 130px;
+        margin-left: -56%;
+
+    }
+
+    .rent-details h2, .rent-details p {
+        left: -2%;
+        margin-left: 0;
+    }
+
+    .rent-button {
+        left: 90%;
+        padding-top: 20%;
+    }
+
+    .main-photo img {
+        max-width: 70%;
+        height: auto;
+        display: block;
+        margin-left: 30%;
+    }
+    .main-photo {
+        margin-right: 0;
+        right: 0;
+    }
+
+    .main-details p {
+        margin-left: -15%;
+        margin-top: -5%;
+    }
+
+    .main-button {
+        position: relative;
+        left: -88%;
+        margin-top: 25%;
+
+    }
+}
+
+
+@media (max-width: 600px)  {
+   
+    .rent-photo img {
+        max-width: 60%;
+        height: auto;
+        display: block;
+        margin-top: 320px;
+        left: 100%;
+    }
+
+    .main-photo img {
+        max-width: 60%;
+        height: auto;
+        display: block;
+        margin-top: 40px;
+        position: relative;
+        margin-left: 110px;
+        padding-top: 5%;
+    }
+    .rent-button {
+        left: 3%;
+        margin-top: 250px;
+    }
+    .rent-details h2, .rent-details p {
+        text-align: left;
+        left: 6%;
+    }
+
+    .main-details p {
+    text-align: center;
+    margin-left: 30%;
+    margin-bottom: 60%;
+    margin-top: -23%;
+    padding-bottom: 5%;
+    }
+
+    .main-button {
+        position: relative;
+        left: -40%;
+        margin-top: -1%;
+        padding-top: 5%;
+    }
+    .header h1, .white-bg {
+        font-size: 2rem;
+    }
+}
+
