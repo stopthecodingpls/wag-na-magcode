@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>R&R Car Rental</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="rnrnew.css">
+    <link rel="stylesheet" href="rnr.css">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
@@ -54,7 +54,7 @@
             <img src="bggg.png" alt="Background">
             <div class="hero-content">
                 <h1>Drive your way,<br>Rent Today!</h1>
-                <p>Experience a fantastic car rental that is created to meet your needs.<br>
+                <p class="styled-paragraph">Experience a fantastic car rental that is created to meet your needs.<br>
                 Take advantage of our incredible deals, pick from a broad selection of cars,<br>
                 and have flexible rental options. We have the ideal vehicle for any journey,<br>
                 whether it is a weekend getaway, a business trip, or just wanting to go somewhere<br>
@@ -64,8 +64,16 @@
     </section>
 
     <div class="search-box">
-        <button class="btn btn-primary btn-block" id="search-button">Want to rent a car? Book now!</button>
+        <button class="btn btn-primary btn-block" 
+            id="search-button" 
+            style="background-color: #ff4d4d; color: white; border: none;"
+            onmouseover="this.style.backgroundColor='#ff0000';" 
+            onmouseout="this.style.backgroundColor='#7c0a02 ';">
+            Want to rent a car? Book now!
+        </button>
     </div>
+
+
 
     <div class="yellow-bg">
         <div class="container text-center">
