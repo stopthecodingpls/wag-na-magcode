@@ -73,7 +73,7 @@
                     alert('New record created successfully');
                     this.reset();
                 } else {
-                    alert('Error: ' + data);
+                    alert('' + data);
                 }
             })
             .catch(error => {
