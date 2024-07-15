@@ -16,8 +16,8 @@
                 <li><a href="messageAdmin.php">Messages</a></li>
             </ul>
         </nav>
-        <form action="rnr.php">
-            <button type="submit" class="sign-up">Logout</button>
+        <form action="logout.php" method="post">
+            <button type="submit" class="nav-link btn btn-danger">Logout</button>
         </form>
     </header>
     <main>

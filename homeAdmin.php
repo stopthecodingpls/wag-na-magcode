@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,8 +16,8 @@
                 <li><a href="messageAdmin.php">Messages</a></li>
             </ul>
         </nav>
-        <form action="rnr.php">
-            <button type="submit" class="sign-up">Logout</button>
+        <form action="logout.php" method="post">
+            <button type="submit" class="nav-link btn btn-danger">Logout</button>
         </form>
     </header>
     <main>
@@ -27,7 +26,7 @@
             $servername = "127.0.0.1";
             $username = "root";
             $password = "";
-            $dbname = "paymentinfo";
+            $dbname = "login";
 
             $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -35,23 +34,25 @@
                 die("Connection failed: " . $conn->connect_error);
             }
 
-            $sql = "SELECT booking_time, rental_date, pickup_location, dropoff_location, payment_method FROM paymenttable ORDER BY rental_date DESC";
+            $sql = "SELECT pickup_time, dropoff_time, pickup_date, dropoff_date, pickup_location, dropoff_location FROM paymenttable ORDER BY pickup_date DESC";
             $result = $conn->query($sql);
 
             if ($result->num_rows > 0) {
                 while($row = $result->fetch_assoc()) {
-                    $bookingTime = $row['booking_time'];
-                    $rentalDate = $row['rental_date'];
+                    $pickupTime = $row['pickup_time'];
+                    $dropoffTime = $row['dropoff_time'];
+                    $pickupDate = $row['pickup_date'];
+                    $dropoffDate = $row['dropoff_date'];
                     $pickupLocation = $row['pickup_location'];
                     $dropoffLocation = $row['dropoff_location'];
-                    $paymentMethod = $row['payment_method'];
 
                     echo "<div class='booking'>";
-                    echo "<p><strong>Time:</strong> $bookingTime</p>";
-                    echo "<p><strong>Date:</strong> $rentalDate</p>";
+                    echo "<p><strong>Pickup Time:</strong> $pickupTime</p>";
+                    echo "<p><strong>Dropoff Time:</strong> $dropoffTime</p>";
+                    echo "<p><strong>Pickup Date:</strong> $pickupDate</p>";
+                    echo "<p><strong>Dropoff Date:</strong> $dropoffDate</p>";
                     echo "<p><strong>Pickup Location:</strong> $pickupLocation</p>";
                     echo "<p><strong>Dropoff Location:</strong> $dropoffLocation</p>";
-                    echo "<p><strong>Payment Method:</strong> $paymentMethod</p>";
                     echo "</div><hr>";
                 }
             } else {

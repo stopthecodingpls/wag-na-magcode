@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manage Bookings - R&R</title>
     <link rel="stylesheet" href="home.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
     <header>
@@ -16,8 +17,8 @@
                 <li><a href="messageAdmin.php">Messages</a></li>
             </ul>
         </nav>
-        <form action="rnr.php">
-            <button type="submit" class="sign-up">Logout</button>
+        <form action="logout.php" method="post">
+            <button type="submit" class="nav-link btn btn-danger">Logout</button>
         </form>
     </header>
     <main>
@@ -26,28 +27,80 @@
             <thead>
                 <tr>
                     <th>Booking ID</th>
-                    <th>Date</th>
-                    <th>Time</th>
+                    <th>Pickup Date</th>
+                    <th>Pickup Time</th>
                     <th>Pickup Location</th>
+                    <th>Drop-off Date</th>
+                    <th>Drop-off Time</th>
                     <th>Drop-off Location</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>2023-06-22</td>
-                    <td>10:00 AM</td>
-                    <td>123 Main St</td>
-                    <td>456 Oak St</td>
-                    <td>
-                        <button class="edit">Edit</button>
-                        <button class="delete">Delete</button>
-                    </td>
-                </tr>
+                <?php
+                $servername = "127.0.0.1";
+                $username = "root";
+                $password = "";
+                $dbname = "login";
+
+                $conn = new mysqli($servername, $username, $password, $dbname);
+
+                if ($conn->connect_error) {
+                    die("Connection failed: " . $conn->connect_error);
+                }
+
+                $sql = "SELECT payment_id, pickup_date, pickup_time, pickup_location, dropoff_date, dropoff_time, dropoff_location FROM paymenttable ORDER BY pickup_date DESC";
+                $result = $conn->query($sql);
+
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        $paymentId = $row['payment_id'];
+                        $pickupDate = $row['pickup_date'];
+                        $pickupTime = $row['pickup_time'];
+                        $pickupLocation = $row['pickup_location'];
+                        $dropoffDate = $row['dropoff_date'];
+                        $dropoffTime = $row['dropoff_time'];
+                        $dropoffLocation = $row['dropoff_location'];
+
+                        echo "<tr data-id='$paymentId'>";
+                        echo "<td class='payment_id'>$paymentId</td>";
+                        echo "<td class='pickup_date'>$pickupDate</td>";
+                        echo "<td class='pickup_time'>$pickupTime</td>";
+                        echo "<td class='pickup_location'>$pickupLocation</td>";
+                        echo "<td class='dropoff_date'>$dropoffDate</td>";
+                        echo "<td class='dropoff_time'>$dropoffTime</td>";
+                        echo "<td class='dropoff_location'>$dropoffLocation</td>";
+                        echo "<td>";
+                        echo "<button class='delete button-style'>Delete</button>";
+                        echo "</td>";
+                        echo "</tr>";
+                    }
+                } else {
+                    echo "<tr><td colspan='8'>No bookings found.</td></tr>";
+                }
+
+                $conn->close();
+                ?>
             </tbody>
         </table>
     </main>
-    <script src="script.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.delete').click(function() {
+                if (confirm('Are you sure you want to delete this booking?')) {
+                    var row = $(this).closest('tr');
+                    var paymentId = row.find('.payment_id').text();
+
+                    $.post('delete.php', { payment_id: paymentId }, function(response) {
+                        if (response == "Booking deleted successfully") {
+                            row.remove();
+                        } else {
+                            alert(response);
+                        }
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>

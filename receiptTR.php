@@ -1,11 +1,74 @@
+<?php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
+$servername = "127.0.0.1";
+$username = "root";
+$password = "";
+
+$dbname_paymentinfo = "paymentinfo";
+$conn_paymentinfo = new mysqli($servername, $username, $password, $dbname_paymentinfo);
+
+if ($conn_paymentinfo->connect_error) {
+    die("Connection to paymentinfo database failed: " . $conn_paymentinfo->connect_error);
+}
+
+$customerName = "N/A";
+
+if (isset($_SESSION['id'])) {
+    $id = $_SESSION['id'];
+    $sql = "SELECT firstname, lastname FROM userInfo WHERE id = '$id'";
+    $result = $conn_paymentinfo->query($sql);
+
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        $customerName = $row['firstname'] . ' ' . $row['lastname'];
+    }
+}
+
+$conn_paymentinfo->close();
+
+$dbname_login = "login";
+$conn_login = new mysqli($servername, $username, $password, $dbname_login);
+
+if ($conn_login->connect_error) {
+    die("Connection to login database failed: " . $conn_login->connect_error);
+}
+
+$pickupDate = "N/A";
+$dropoffDate = "N/A";
+$rentalDuration = "N/A";
+$totalPrice = 0;
+
+if (isset($_SESSION['id'])) {
+    $id = $_SESSION['id'];
+    $sql = "SELECT pickup_date, dropoff_date FROM paymenttable WHERE id = '$id'";
+    $result = $conn_login->query($sql);
+
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        $pickupDate = $row['pickup_date'];
+        $dropoffDate = $row['dropoff_date'];
+        
+        $pickupDateTime = new DateTime($pickupDate);
+        $dropoffDateTime = new DateTime($dropoffDate);
+        $interval = $pickupDateTime->diff($dropoffDateTime);
+        $rentalDuration = $interval->days + 1;
+        $totalPrice = $rentalDuration * 2500;
+    }
+}
+
+$conn_login->close();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Car Rental Service</title>
-   <link rel="stylesheet" href="receipt.css">
-   <style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Rental Service</title>
+    <link rel="stylesheet" href="receipt.css">
+    <style>
         .modal {
             display: none; 
             position: fixed; 
@@ -45,45 +108,19 @@
 </head>
 <body>
 
-<?php
-$servername = "127.0.0.1";
-$username = "root";
-$password = "";
-$dbname = "paymentinfo";
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-if ($conn->connect_error) {
-   die("Connection failed: " . $conn->connect_error);
-}
-
-$sql = "SELECT firstname, lastname, rental_date FROM paymenttable WHERE car_model = 'Rush'";
-$result = $conn->query($sql);
-
-if ($result->num_rows > 0) {
-   $row = $result->fetch_assoc();
-   $customerName = $row['firstname'] . ' ' . $row['lastname'];
-   $rentalDate = $row['rental_date'];
-} else {
-   $customerName = "N/A";
-   $rentalDate = "N/A";
-}
-
-$conn->close();
-?>
-
 <div id="receipt-container" class="container">
-   <img src="NL.png" alt="R&R Car Rental Logo" class="logo">
-   <h1>Receipt</h1>
-   <p>Thank you for your payment!</p>
-   <div class="receipt-details">
-       <p><strong>Customer Name:</strong> <?php echo $customerName; ?></p>
-       <p><strong>Rental Date:</strong> <?php echo $rentalDate; ?></p>
-       <p><strong>Car Model:</strong> Toyota Rush</p>
-       <p><strong>Rental Duration:</strong> 3 days</p>
-       <p><strong>Total Amount Paid:</strong> 7500.00</p>
-   </div>
-   <a href="#" class="btn" id="returnHomeBtn">Return to Home</a>
+    <img src="NL.png" alt="R&R Car Rental Logo" class="logo">
+    <h1>Receipt</h1>
+    <p>Thank you for your payment!</p>
+    <div class="receipt-details">
+        <p><strong>Customer Name:</strong> <?php echo htmlspecialchars($customerName); ?></p>
+        <p><strong>Pickup Date:</strong> <?php echo htmlspecialchars($pickupDate); ?></p>
+        <p><strong>Dropoff Date:</strong> <?php echo htmlspecialchars($dropoffDate); ?></p>
+        <p><strong>Car Model:</strong> Toyota Rush</p>
+        <p><strong>Rental Duration:</strong> <?php echo htmlspecialchars($rentalDuration); ?> day(s)</p>
+        <p><strong>Total Amount Paid:</strong> ₱ <?php echo number_format($totalPrice, 2); ?></p>
+    </div>
+    <a href="#" class="btn btn-red" id="returnHomeBtn">Return to Home</a>
 </div>
 
 <div id="feedbackModal" class="modal">

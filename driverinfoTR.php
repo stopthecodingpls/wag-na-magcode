@@ -1,3 +1,47 @@
+<?php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
+$pickup_location = isset($_SESSION['pickup_location']) ? $_SESSION['pickup_location'] : 'Not set';
+$pickup_date = isset($_SESSION['pickup_date']) ? $_SESSION['pickup_date'] : 'Not set';
+$dropoff_location = isset($_SESSION['dropoff_location']) ? $_SESSION['dropoff_location'] : 'Not set';
+$dropoff_date = isset($_SESSION['dropoff_date']) ? $_SESSION['dropoff_date'] : 'Not set';
+
+$servername = "127.0.0.1";
+$username = "root";
+$password = "";
+$dbname = "login";
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+if (isset($_SESSION['id'])) {
+    $id = $_SESSION['id'];
+    $sql = "SELECT pickup_location, pickup_date, dropoff_location, dropoff_date FROM paymenttable WHERE id = '$id'";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $pickup_location = $row['pickup_location'];
+            $pickup_date = $row['pickup_date'];
+            $dropoff_location = $row['dropoff_location'];
+            $dropoff_date = $row['dropoff_date'];
+        }
+    }
+}
+
+$pickupDateTime = new DateTime($pickup_date);
+$dropoffDateTime = new DateTime($dropoff_date);
+$interval = $pickupDateTime->diff($dropoffDateTime);
+$numDays = $interval->days + 1;
+$totalPrice = $numDays * 2500;
+
+$conn->close();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +59,7 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" href="navbarNav">
+        <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="rnr.php#home">Home</a>
@@ -37,8 +81,7 @@
                 </li>
                 <li class="nav-item">
                     <?php
-                    session_start();
-                    if(isset($_SESSION['username'])) {
+                    if (isset($_SESSION['username'])) {
                         echo '<a class="nav-link btn btn-danger" href="logout.php">Logout</a>';
                     } else {
                         echo '<a class="nav-link btn btn-warning" href="signn.php">Sign Up</a>';
@@ -70,7 +113,7 @@
             <h1 class="box-title">Driver's Info</h1>
             <p class="info-note">Once your info is submitted, it cannot be changed. Please double-check before proceeding.</p>
 
-            <form id="driver-info-form" action="driverinfohandlerM1.php" method="POST">
+            <form id="driver-info-form" action="driverinfohandlerTR.php" method="POST">
                 <div class="form-group">
                     <label for="title">Title</label>
                     <input type="text" id="title" name="title" required>
@@ -118,10 +161,10 @@
                         <p>Compact SUV</p>
                         <h1><strong>Toyota Rush</strong></h1>
                         <div class="red-line"></div>
-                        <p>Pick-up location: set by the customer</p>
-                        <p>Pick-up date and time</p>
-                        <p>Drop-off location: set by the customer</p>
-                        <p>Drop-off date and time</p>
+                        <p>Pick-up location: <?php echo $pickup_location; ?></p>
+                        <p>Pick-up date and time: <?php echo $pickup_date; ?></p>
+                        <p>Drop-off location: <?php echo $dropoff_location; ?></p>
+                        <p>Drop-off date and time: <?php echo $dropoff_date; ?></p>
                     </div>
                 </div>
             </div>
@@ -129,13 +172,13 @@
             <div class="square-box2">
                 <div class="box-content2">
                     <div>
-                        <p>Total price for 3 day(s)</p>
-                        <h3>₱ 7,500</h3>
+                        <p>Total price for <?php echo $numDays; ?> day(s)</p>
+                        <h3>₱ <?php echo number_format($totalPrice, 2); ?></h3>
                     </div>
                     <div class="red-line"></div>
                     <div class="box-content3">
                         <p>Payment amount</p>
-                        <h3>₱ 7,500</h3>
+                        <h3>₱ <?php echo number_format($totalPrice, 2); ?></h3>
                     </div>
                 </div>
             </div>

@@ -35,6 +35,11 @@ if (isset($_SESSION['id'])) {
     }
 }
 
+$pickupDateTime = new DateTime($pickup_date);
+$dropoffDateTime = new DateTime($dropoff_date);
+$interval = $pickupDateTime->diff($dropoffDateTime);
+$numDays = $interval->days + 1;
+
 $conn->close();
 ?>
 
@@ -136,8 +141,8 @@ $conn->close();
     </div>
 
     <div class="side-box">
-        <h3>Total price for 3 day(s)</h3>
-        <h1>₱ 4,500</h1>
+        <h3>Total price for <?php echo $numDays; ?> day(s)</h3>
+        <h1><?php echo '₱ ' . ($numDays * 1500); ?></h1>
         <p>Mitsubishi Mirage</p>
         <hr class="separator">
         <button class="next-step" onclick="redirectToNextPage()">Next Step</button>
