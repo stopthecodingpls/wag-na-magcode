@@ -98,11 +98,19 @@ $conn->close();
     </nav>
 
     <main>
-        <form id="search-form" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+    <form id="search-form" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
         <div class="search-section">
             <div class="search-field">
                 <label for="pickup-location">Pick-up location</label>
-                <input type="text" id="pickup-location" name="pickup_location" required>
+                <select id="pickup-location" name="pickup_location" required>
+                    <option value="" disabled selected>Select location</option>
+                    <option value="Golden City, Sta Rosa, Laguna">Golden City Sta Rosa, Laguna</option>
+                    <option value="Shell Gas Station, Brgy Dila">Shell Gas Station, Brgy Dila</option>
+                    <option value="Jollibee Golden City">Jollibee Golden City</option>
+                    <option value="Solenad 3">Solenad 3</option>
+                    <option value="Jollibee Sta Rosa Bayan">Jollibee Sta Rosa Bayan</option>
+                    <option value="Sta Rosa Plaza">Sta Rosa Plaza</option>
+                </select>
             </div>
             <div class="search-field">
                 <label for="pickup-date">Pick-up date</label>
@@ -118,11 +126,18 @@ $conn->close();
             </div>
             <div class="search-field">
                 <label for="dropoff-location">Drop-off location</label>
-                <input type="text" id="dropoff-location" name="dropoff_location" required>
+                <input type="text" id="dropoff-location" name="dropoff_location" size="25" required>
             </div>
             <button type="submit" class="edit-btn" id="search-button">SEARCH</button>
         </div>
     </form>
+
+    <script>
+        document.getElementById('pickup-location').addEventListener('change', function() {
+            const selectedLocation = this.value;
+            document.getElementById('dropoff-location').value = selectedLocation;
+        });
+    </script>
 
         <div class="card-container" id="car-cards">
 

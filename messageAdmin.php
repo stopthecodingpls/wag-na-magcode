@@ -5,19 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Messages - R&R</title>
     <link rel="stylesheet" href="message.css">
+    <style>
+        .btn-yellow {
+            background-color: #DAA520; 
+            color: black; 
+            border-color: #DAA520;
+            font-family: inherit; 
+            font-size: inherit; 
+            padding: 0.375rem 0.75rem; 
+        }
+
+        .btn-yellow:hover {
+            background-color: #FFC107; 
+            border-color: #FFC107;
+        }
+
+        .nav-link {
+            text-decoration: none; 
+            color: inherit; 
+        }
+    </style>
 </head>
 <body>
     <header>
         <div class="logo">R&R</div>
         <nav>
             <ul>
-                <li><a href="homeAdmin.php">Home</a></li>
-                <li><a href="bookingAdmin.php">Booking</a></li>
-                <li><a href="messageAdmin.php">Messages</a></li>
+                <li><a href="homeAdmin.php" class="nav-link">Home</a></li>
+                <li><a href="bookingAdmin.php" class="nav-link">Booking</a></li>
+                <li><a href="messageAdmin.php" class="nav-link">Messages</a></li>
             </ul>
         </nav>
-        <form action="logout.php" method="post">
-            <button type="submit" class="nav-link btn btn-danger">Logout</button>
+        <form action="logout.php" method="post" class="d-inline">
+            <button type="submit" class="nav-link btn btn-yellow">Logout</button>
         </form>
     </header>
     <main>

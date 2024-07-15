@@ -6,19 +6,39 @@
     <title>Manage Bookings - R&R</title>
     <link rel="stylesheet" href="home.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        .btn-yellow {
+            background-color: #DAA520; /* Darker shade of yellow */
+            color: black; /* Set text color to black */
+            border-color: #DAA520;
+            font-family: inherit; /* Ensuring the font family is inherited */
+            font-size: inherit; /* Ensuring the font size is inherited */
+            padding: 0.375rem 0.75rem; /* Adjust padding to match nav-link */
+        }
+
+        .btn-yellow:hover {
+            background-color: #FFC107; /* Slightly darker shade for hover */
+            border-color: #FFC107;
+        }
+
+        .nav-link {
+            text-decoration: none; /* Ensuring text-decoration matches links */
+            color: inherit; /* Ensuring color matches links */
+        }
+    </style>
 </head>
 <body>
     <header>
         <div class="logo">R&R</div>
         <nav>
             <ul>
-                <li><a href="homeAdmin.php">Home</a></li>
-                <li><a href="bookingAdmin.php">Bookings</a></li>
-                <li><a href="messageAdmin.php">Messages</a></li>
+                <li><a href="homeAdmin.php" class="nav-link">Home</a></li>
+                <li><a href="bookingAdmin.php" class="nav-link">Bookings</a></li>
+                <li><a href="messageAdmin.php" class="nav-link">Messages</a></li>
             </ul>
         </nav>
-        <form action="logout.php" method="post">
-            <button type="submit" class="nav-link btn btn-danger">Logout</button>
+        <form action="logout.php" method="post" class="d-inline">
+            <button type="submit" class="nav-link btn btn-yellow">Logout</button>
         </form>
     </header>
     <main>

@@ -178,9 +178,9 @@ $conn->close();
     <div class="container2">
         <div class="rectangle2">
             <div class="rec-content rectanglee">
-                <p>By clicking “Pay now”, you agreed that you have read and understood<br>
-                our Term and Condition and Cancellation Policy</p>
-                <button class="payment" onclick="handlePayment()">Pay Now</button>
+            <p>By clicking “Pay now”, you agreed that you have read and understood<br>
+                our <a href="terms.php">Terms and Conditions and Cancellation Policy</a></p>
+                <button class="payment" onclick="redirectToNextPage()">Pay Now</button>
             </div>
         </div>
     </div>
